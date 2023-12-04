@@ -38,6 +38,12 @@ plot(sdgs_index_score, international_spillovers_score, xlab="SDGs Index Score", 
 
 # 3. 1~17のゴールごとのスコアとの相関を見る
 for (i in 1:17) {
+  # ファイル名を設定
+  file_name <- paste0("output/SDG_Goal_", i, "_Score_Plot.png")
+
+  # PNGファイルを開始
+  png(file_name)
+
   # カラム名を動的に生成
   column_name <- paste0("Goal.", i, ".Score")
 
@@ -46,4 +52,7 @@ for (i in 1:17) {
 
   # SDGs Index Scoreと特定のSDGスコアのプロット
   plot(sdgs_index_score, goal_score, xlab="SDGs Index Score", ylab=paste0("SDG ", i, " Score")) # nolint
+
+  # デバイスを閉じる（ファイルを保存）
+  dev.off()
 }
